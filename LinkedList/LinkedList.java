@@ -59,42 +59,57 @@ public class LinkedList{
     }
 
     public void deleteAtPosition(int position){
-//        if(head == null){
-//            System.out.println("List is empty");
-//        }
-//        else{
-//            if(head.next == null){
-//                head = null;
-//            }
-//            else if(head.next.next == null){
-//                head = head.next;
-//            }
-//            else{
-//                ListNode current = head.next;
-//                ListNode previous = head;
-//                int counter = 1;
-//                while(true){
-//                    if(position == 0){
-//                        head = current;
-//                        break;
-//                    }
-//                    if(counter == position){
-//                        previous.next = current.next;
-//                        break;
-//                    }
-//                    current = current.next;
-//                    previous = previous.next;
-//                    counter++;
-//                }
-//            }
-//
-//        }
+        if (head == null) {
+            return;
+        }
 
+        ListNode temp = head;
+
+        // If position is 0, delete the head node
+        if (position == 0) {
+            head = temp.next; // Move head to next node
+            return;
+        }
+
+        // Find the node just before the position to be deleted
+        for (int i = 0; temp != null && i < position - 1; i++) {
+            temp = temp.next;
+        }
+
+        // If position is more than number of nodes
+        if (temp == null || temp.next == null) {
+            return;
+        }
+
+        // Node temp->next is the node to be deleted
+        // Store pointer to the next of node to be deleted
+        ListNode next = temp.next.next;
+
+        // Unlink the node from the linked list
+        temp.next = next;
     }
+
+
+
+
     public void reverse(){
+        ListNode prev = null;
+        ListNode current = head;
+        ListNode next = null;
 
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+
+            prev = current;
+            current = next;
+        }
+
+        head = prev;
     }
+
     public void findMiddleElement(){
+        
 
     }
     public void detectLoop(){
@@ -105,12 +120,12 @@ public class LinkedList{
         LinkedList myList = new LinkedList();
 
         myList.addElement(10);
-//        myList.addElement(20);
-//        myList.addElement(30);
-//        myList.addElement(40);
-//        myList.addElement(50);
-//        myList.insertAtEnd(60);
-        myList.deleteAtPosition(2);
+        myList.addElement(20);
+        myList.addElement(30);
+        myList.addElement(40);
+        myList.addElement(50);
+        myList.insertAtEnd(60);
+        myList.deleteAtPosition(1);
         myList.display();
     }
 }
