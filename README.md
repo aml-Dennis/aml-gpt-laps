@@ -58,7 +58,7 @@ The target audience for this web application includes:
 
 This scope, target audience, and key features outline provide a comprehensive foundation for the development of the apartment rental web application. The next steps will include detailed planning, wireframing, and designing the system architecture to ensure a successful implementation.
 
-# Rent an Apartment Web App - Initial Requirements Document
+# Requirements Document
 
 ## 1. Problem Statement and Project Objectives
 
